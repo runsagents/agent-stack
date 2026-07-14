@@ -1,5 +1,24 @@
 # agent-stack
 
+| | |
+|---|---|
+| **Problem** | A fleet can produce code quickly while lacking one loop for territory evidence decisions memory safety and economics |
+| **Theory** | [Human-in-the-loop decision support](https://doi.org/10.1109/3468.844354) keeps consequential judgment with a human inside an automated control loop |
+| **This tool** | A master operating loop composes the runsagents controls for production-stakes agent work |
+
+```mermaid
+flowchart LR
+  A[permission-surface] --> B[agent-fleet-control]
+  B -->|build| C[rival-review<br/>rival-review-bench]
+  C --> D[airlocks<br/>settlement-proof]
+  D --> E[handoff-receipts<br/>loss-weighted-unknowns]
+  E -->|human decides| F[quiz-me]
+  F --> G[memory-ledger<br/>night-watch<br/>route-ledger]
+  F -->|outbound| H[voice-calibration]
+  G --> B
+```
+
+
 The runsagents agent stack: how one human runs a company where agents do the work.  
 Every piece assumes production stakes: real money, real state, real consequences.
 
