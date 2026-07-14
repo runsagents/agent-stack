@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Problem** | A fleet can produce code quickly while lacking one loop for territory evidence decisions memory safety and economics |
+| **Problem** | A fleet produces code fast, but without one loop tying together territory, evidence, decisions, memory, safety and economics |
 | **Theory** | [Human-in-the-loop decision support](https://doi.org/10.1109/3468.844354) keeps consequential judgment with a human inside an automated control loop |
 | **This tool** | A master operating loop composes the runsagents controls for production-stakes agent work |
 
