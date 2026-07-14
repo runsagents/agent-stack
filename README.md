@@ -9,7 +9,7 @@
 ```mermaid
 flowchart LR
   A[permission-surface] --> B[agent-fleet-control]
-  B -->|build| C[rival-review<br/>rival-review-bench]
+  B -->|build| C[second-opinion<br/>second-opinion-bench]
   C --> D[airlocks<br/>settlement-proof]
   D --> E[handoff-receipts<br/>loss-weighted-unknowns]
   E -->|human decides| F[quiz-me]
@@ -25,7 +25,7 @@ Every piece assumes production stakes: real money, real state, real consequences
 ## The operating loop
 
 ```text
-territory (agent-fleet-control) → build → attack (rival-review, measured by rival-review-bench)
+territory (agent-fleet-control) → build → attack (second-opinion, measured by second-opinion-bench)
 → verify state (airlocks, settlement-proof) → receipts (handoff-receipts)
 → ranked unknowns (loss-weighted-unknowns) → the human decides (quiz-me keeps the human able to)
 → memory with provenance (memory-ledger) → unattended sweeps file-don't-fix (night-watch)
@@ -35,15 +35,15 @@ permission-surface guards what enters the stack
 voice-calibration governs the human's outbound words
 ```
 
-This is a control loop, not a toolbox shelf. Give every writer territory before it builds. Make a different model attack consequential work, then measure whether that rivalry adds recall. Believe system state over success-shaped language, carry evidence across every handoff, and put the costliest unknowns in front of the human while the human can still explain the system. Preserve memory only with provenance and expiry. Let unattended agents observe, file, and stop. Price routes from outcomes, not model folklore. Inspect every new artifact before it joins the loop, and calibrate the words that leave it in the human's name.
+This is a control loop, not a toolbox shelf. Give every writer territory before it builds. Make a second, independent model attack consequential work, then measure whether that second opinion adds recall. Believe system state over success-shaped language, carry evidence across every handoff, and put the costliest unknowns in front of the human while the human can still explain the system. Preserve memory only with provenance and expiry. Let unattended agents observe, file, and stop. Price routes from outcomes, not model folklore. Inspect every new artifact before it joins the loop, and calibrate the words that leave it in the human's name.
 
 ## Catalog
 
 | Artifact | What it does | Install |
 | --- | --- | --- |
 | [agent-fleet-control](https://github.com/runsagents/agent-fleet-control) | Creates separate worktrees, explicit path territory, task contracts, verification evidence, and receipts; it never commits, pushes, or merges. | `git clone https://github.com/runsagents/agent-fleet-control.git /tmp/agent-fleet-control && install -m 0755 /tmp/agent-fleet-control/bin/agent-fleet "$HOME/.local/bin/agent-fleet"` |
-| [rival-review](https://github.com/runsagents/rival-review) | Sends meaningful diffs to a different model to prove them wrong; unresolved disagreement goes to the human. | `npx skills add runsagents/rival-review` |
-| [rival-review-bench](https://github.com/runsagents/rival-review-bench) | Grades local reviewer verdicts on 12 synthetic planted defects and reports recall, false positives, coverage, and pair uplift; it makes no model calls. | `git clone https://github.com/runsagents/rival-review-bench.git` |
+| [second-opinion](https://github.com/runsagents/second-opinion) | Sends meaningful diffs to a second, independent model to prove them wrong; unresolved disagreement goes to a human referee. | `npx skills add runsagents/second-opinion` |
+| [second-opinion-bench](https://github.com/runsagents/second-opinion-bench) | Grades local reviewer verdicts on 12 synthetic planted defects and reports recall, false positives, coverage, and pair uplift; it makes no model calls. | `git clone https://github.com/runsagents/second-opinion-bench.git` |
 | [airlocks](https://github.com/runsagents/airlocks) | Checks done claims against the system of record from a context that did not do the work, with evidence quoted in the report. | `npx skills add runsagents/airlocks` |
 | [settlement-proof](https://github.com/runsagents/settlement-proof) | Builds a read-only payment evidence packet across processor, ledger, idempotency, and reconciliation state, blocking done when they disagree. | `npx skills add runsagents/settlement-proof` |
 | [handoff-receipts](https://github.com/runsagents/handoff-receipts) | Validates structured handoff receipts for scope, territory, decisions, unresolved risks, verification, artifacts, and acceptance; validation is not proof. | `git clone https://github.com/runsagents/handoff-receipts.git` |
@@ -63,7 +63,7 @@ Start with three controls that cover human comprehension, independent state veri
 
 1. Install [quiz-me](https://github.com/runsagents/quiz-me) and prove that you can still answer for what the agents shipped.
 2. Put [airlocks](https://github.com/runsagents/airlocks) in front of consequential claims such as merged, deployed, passing, published, or fixed.
-3. Use [rival-review](https://github.com/runsagents/rival-review) before merging production-stakes changes, while keeping tests and ordinary gates in place.
+3. Use [second-opinion](https://github.com/runsagents/second-opinion) before merging production-stakes changes, while keeping tests and ordinary gates in place.
 
 ## Sources of truth
 
